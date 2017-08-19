@@ -1,0 +1,29 @@
+{
+  "name": "node-learning",
+  "version": "1.0.0",
+  "description": "node入门学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangming1994/node-learning.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "super",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huangming1994/node-learning/issues"
+  },
+  "homepage": "https://github.com/huangming1994/node-learning#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "eventproxy": "^1.0.0",
+    "express": "^4.15.4",
+    "superagent": "^3.5.2"
+  }
+}
