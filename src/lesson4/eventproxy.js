@@ -1,32 +1,32 @@
-var express = require('express')
-var eventproxy = require('eventproxy')
-var cheerio = require('cheerio')
-var superagent = require('superagent')
-var url = require('url')
+const express = require('express')
+const eventproxy = require('eventproxy')
+const cheerio = require('cheerio')
+const superagent = require('superagent')
+const url = require('url')
 
-var app = express()
-var cnodeUrl = 'http://cnodejs.org/'
+const app = express()
+const cnodeUrl = 'http://cnodejs.org/'
 
 superagent.get(cnodeUrl)
 .then(function(res){
-  var topicUrls = []
-  var $ = cheerio.load(res.text)
+  const topicUrls = []
+  const $ = cheerio.load(res.text)
   $('#topic_list .topic_title')
   .filter(function(index){
     return index < 3
   })
   .each(function(index, ele){
-    var $element = $(ele)
-    var href = url.resolve(cnodeUrl, $element.attr('href'))
+    const $element = $(ele)
+    const href = url.resolve(cnodeUrl, $element.attr('href'))
     topicUrls.push(href)
   })
 
-  var ep = new eventproxy()
+  const ep = new eventproxy()
   ep.after('topic_html', topicUrls.length, function(topics){
-    var result = topics.map(function(topicPair){
-      var topicUrl = topicPair[0]
-      var topicHtml = topicPair[1]
-      var $ = cheerio.load(topicHtml)
+    const result = topics.map(function(topicPair){
+      const topicUrl = topicPair[0]
+      const topicHtml = topicPair[1]
+      const $ = cheerio.load(topicHtml)
       return ({
         title: $('.topic_full_title').text().trim(),
         href: topicUrl,
