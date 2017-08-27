@@ -4,7 +4,7 @@
 // 1、npm uninstall mongoose  2、npm install mongoose@4.10.8 --save  解决上述warning
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/local')
+mongoose.connect('mongodb://127.0.0.1:27017/test')
 
 mongoose.Promise = global.Promise  //  Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 const Person = mongoose.model('Person', {
@@ -13,7 +13,7 @@ const Person = mongoose.model('Person', {
   job: String,
 })
 
-const xiaoming = new Person('xiaoming', 18, '学生')
+const xiaoming = new Person({ name: 'xiaoming', age: 18, job: '学生' })
 
 xiaoming.save(function(err){
   if (err) console.log(err)
